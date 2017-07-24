@@ -1,0 +1,18 @@
+{
+  "development": {
+      "username": "jackshort",
+      "password": null,
+      "database": "ShortSports-dev",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "dialect": "postgres"
+    },
+  "test": {
+      "username": "jackshort",
+      "password": null,
+      "database": "ShortSports-dev",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "dialect": "postgres"
+    }
+}
