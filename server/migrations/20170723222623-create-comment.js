@@ -8,7 +8,7 @@ module.exports = {
       },
       content: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -17,7 +17,16 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      postId: {
+          type: Sequelize.INTEGER,
+          onDelete: 'CASCADE',
+          references: {
+              model: 'Posts',
+              key: 'id',
+              as: 'postId'
+          }
       }
     }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Comments'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Comments')
 };

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const postsController = require('../controllers').posts;
+const commentsController = require('../controllers').comments;
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -13,5 +14,7 @@ router.get('/api', (req, res) => res.status(200).send({
 
 router.post('/api/posts', postsController.create);
 router.get('/api/posts', postsController.list);
+
+router.post('/api/posts/:postId/comments', commentsController.create);
 
 module.exports = router;

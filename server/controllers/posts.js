@@ -13,7 +13,7 @@ module.exports = {
     list(req, res) {
         return Post
             .all()
-            .then(post => res.status(200).send(posts))
+            .then(posts => res.status(200).send(posts))
             .catch(error => res.status(400).send(error));
     }
 };
