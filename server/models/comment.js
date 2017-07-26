@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    Comment.associate = (models) => {
+    Comment.associate = function(models) {
         Comment.belongsTo(models.Post, {
             foreignKey: 'postId',
             onDelete: 'CASCADE'
