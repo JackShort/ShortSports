@@ -14,6 +14,7 @@ router.get('/api', (req, res) => res.status(200).send({
 
 router.post('/api/posts', postsController.create);
 router.get('/api/posts', postsController.list);
+router.get('/api/posts/:postId', postsController.retrieve);
 
 router.post('/api/posts/:postId/comments', commentsController.create);
 

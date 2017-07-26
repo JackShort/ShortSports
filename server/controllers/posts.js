@@ -25,7 +25,7 @@ module.exports = {
 
     retrieve(req, res) {
         return Post
-            .findById(req.params.todoId, {
+            .findById(req.params.postId, {
                 include: [{
                     model: Comment,
                     as: 'comments'
