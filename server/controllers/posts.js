@@ -41,5 +41,50 @@ module.exports = {
                 return res.status(200).send(post);
             })
             .catch(error => res.status(400).send(error));
+    },
+
+    update(req, res) {
+        return Post
+            .findById(req.params.postId, {
+                include:[{
+                    model: Comment,
+                    as: 'comments'
+                }]
+            })
+            .then(post => {
+                if (!post) {
+                    return res.status(404).send({
+                        messsage: 'Post not found'
+                    });
+                }
+
+                return post
+                    .update({
+                        title: req.body.title || post.title
+                    })
+                    .then(() => res.status(200).send(post))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
+    },
+
+    destroy(req, res) {
+        return Post
+            .findById(req.params.postId)
+            .then(post => {
+                if (!post) {
+                    return res.status(404).send({
+                        message: 'Post Not Found'
+                    });
+                }
+
+                return post
+                    .destroy()
+                    .then(() => res.status(200).send({
+                        message: 'Post Deleted'
+                    }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
     }
 };
