@@ -59,9 +59,7 @@ module.exports = {
                 }
 
                 return post
-                    .update({
-                        title: req.body.title || post.title
-                    })
+                    .update(req.body, {fields: Object.keys(req.body)})
                     .then(() => res.status(200).send(post))
                     .catch(error => res.status(400).send(error));
             })
