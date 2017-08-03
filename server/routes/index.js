@@ -1,25 +1,31 @@
 var express = require('express');
-var router = express.Router();
 
 const postsController = require('../controllers').posts;
 const commentsController = require('../controllers').comments;
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+module.exports = function(app, passport) {
 
-router.get('/api', (req, res) => res.status(200).send({
-    message: 'welcome to the api'
-}));
+    // ------------- Normal Routes -------------
+    app.get('/', function(req, res, next) {
+        res.render('index', { title: 'Express' });
+    });
 
-router.post('/api/posts', postsController.create);
-router.get('/api/posts', postsController.list);
-router.get('/api/posts/:postId', postsController.retrieve);
-router.put('/api/posts/:postId', postsController.update);
-router.delete('/api/posts/:postId', postsController.destroy);
+    app.get('/api/login', function(req, res) {
+    });
 
-router.post('/api/posts/:postId/comments', commentsController.create);
-router.put('/api/posts/:postId/comments/:commentId', commentsController.update);
-router.delete('/api/posts/:postId/comments/:commentId', commentsController.destroy);
+    app.get('/api', (req, res) => res.status(200).send({
+        message: 'welcome to the api'
+    }));
 
-module.exports = router;
+    app.post('/api/posts', postsController.create);
+    app.get('/api/posts', postsController.list);
+    app.get('/api/posts/:postId', postsController.retrieve);
+    app.put('/api/posts/:postId', postsController.update);
+    app.delete('/api/posts/:postId', postsController.destroy);
+
+    app.post('/api/posts/:postId/comments', commentsController.create);
+    app.put('/api/posts/:postId/comments/:commentId', commentsController.update);
+    app.delete('/api/posts/:postId/comments/:commentId', commentsController.destroy);
+
+    // ------------- Authenticated Routes -------------
+};
