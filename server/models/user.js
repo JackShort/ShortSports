@@ -2,20 +2,36 @@
 var bcrypt = require('bcrypt');
 
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define('User', {
-    username: DataTypes.STRING,
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+    const User = sequelize.define('User', {
+        username: {
+            type: DataTypes.STRING
+        },
 
-    User.prototype.generateHash = function(password) {
+        firstName: {
+            type: DataTypes.STRING
+        },
+
+        lastName: {
+            type: DataTypes.STRING
+        },
+
+        password: {
+            type: DataTypes.STRING
+        },
+
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    }, {
+        classMethods: {
+            associate: function(models) {
+                // associations can be defined here
+            }
+        }
+    });
+
+    User.generateHash = function(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
     };
 
@@ -23,5 +39,5 @@ module.exports = function(sequelize, DataTypes) {
         return bcrypt.compareSync(password, this.password);
     };
 
-  return User;
+    return User;
 };

@@ -10,8 +10,13 @@ module.exports = function(app, passport) {
         res.render('index', { title: 'Express' });
     });
 
-    app.get('/api/login', function(req, res) {
-    });
+    app.get('/login', (req, res) => res.status(200).send ({
+        message: 'welcome to the login page'
+    }));
+
+    app.get('/signup', (req, res) => res.status(200).send({
+        message: 'welcome to the signup page'
+    }));
 
     app.get('/api', (req, res) => res.status(200).send({
         message: 'welcome to the api'
@@ -28,4 +33,9 @@ module.exports = function(app, passport) {
     app.delete('/api/posts/:postId/comments/:commentId', commentsController.destroy);
 
     // ------------- Authenticated Routes -------------
+    app.post('/api/signup', passport.authenticate('local-signup', {
+        successRedirect: '/', 
+        failureRedirect: '/signup', 
+        failureFlash: true 
+    }));
 };

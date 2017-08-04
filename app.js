@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./server/config/passport');
+require('./server/config/passport')(passport);
 app.use(session({ secret: 'jackshort',
                   resave: false,
                   saveUninitialized: false}));
