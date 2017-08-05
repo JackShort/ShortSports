@@ -66,4 +66,37 @@ module.exports = function(passport) {
 
     }));
 
+    // =========================================================================
+    // LOCAL LOGIN ============================================================
+    // =========================================================================
+
+    passport.use('local-login', new LocalStrategy({
+        usernameField : 'email',
+        passwordField : 'password'
+    },
+
+    function(email, password, done) {
+
+        User.findOne({
+            where: {
+                email: email
+            }
+        })
+            .then(userFound => {
+                if (!userFound) {
+                    return done(null, false, {message: 'No user found'});
+                }
+
+                if (!userFound.validPassword(password)) {
+                    return done(null, false, {message: 'Oops wrong password'});
+                }
+
+                return done(null, userFound);
+            })
+            .catch(error => {
+                return done(error);
+            });
+
+    }));
+    
 };

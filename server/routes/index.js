@@ -38,4 +38,10 @@ module.exports = function(app, passport) {
         failureRedirect: '/signup', 
         failureFlash: true 
     }));
+
+    app.post('/api/login', passport.authenticate('local-login', {
+        successRedirect: '/', 
+        failureRedirect: '/login', 
+        failureFlash: true 
+    }));
 };

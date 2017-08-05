@@ -22,7 +22,14 @@ module.exports = function(sequelize, DataTypes) {
         email: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+
+        admin: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
+
     }, {
         classMethods: {
             associate: function(models) {
