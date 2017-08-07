@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-  state = {posts: []};
+    state = {posts: []};
   }
 
   componentDidMount() {
