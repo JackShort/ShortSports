@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker.jsx';
 import './stylesheets/index.css';
 import App from './components/App.jsx';
 import Signup from './components/views/signup.jsx';
+import Login from './components/views/login.jsx';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import browserHistory from 'history/createBrowserHistory'
@@ -14,6 +15,7 @@ const Main = () => (
     <Switch>
       <Route exact path='/' component={App}/>
       <Route path='/signup' component={Signup}/>
+      <Route path='/login' component={Login}/>
     </Switch>
   </BrowserRouter>
 )
