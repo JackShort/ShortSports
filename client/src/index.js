@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render((
+import './stylesheets/index.css';
+import App from './components/App';
+import Signup from './components/views/signup';
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import browserHistory from 'history/createBrowserHistory'
+import routes from './routes';
+
+const Main = () => (
   <BrowserRouter>
-  <App />
-  </BrowserRouter>),
-  document.getElementById('root'));
+    <Switch>
+      <Route exact path='/' component={App}/>
+      <Route path='/signup' component={Signup}/>
+    </Switch>
+  </ BrowserRouter>
+)
+
+ReactDOM.render(
+  <Main />,
+  document.getElementById('root')
+);
 registerServiceWorker();
