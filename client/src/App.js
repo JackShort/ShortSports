@@ -5,23 +5,23 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    state = {posts: []};
+    this.state = {posts: []};
   }
 
   componentDidMount() {
-      fetch('/api/posts')
-          .then(res => res.json())
-          .then(posts => this.setState({ posts }));
+    fetch('/api/posts')
+      .then(res => res.json())
+      .then(posts => this.setState({ posts }));
   }
 
   render() {
-      return(
-          <div className="App">
-            <h1>Posts</h1>
-            {this.state.posts.map(post =>
-                                  <div key={post.id}>{post.title}</div>
-                                 )}
-          </div>
+    return(
+      <div className="App">
+      <h1>Posts</h1>
+      {this.state.posts.map(post =>
+        <div key={post.id}>{post.title}</div>
+      )}
+        </div>
       );
   }
 }
