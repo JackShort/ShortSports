@@ -36,8 +36,12 @@ class Login extends Component {
         password: this.state.password
       })
     })
-    .then(res => {
-      console.log(res);
+    .then(req => {
+      if (req.status === 200) {
+        console.log('hello');
+      } else {
+        console.log('shit')
+      }
     });
   }
 

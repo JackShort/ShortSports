@@ -33,15 +33,27 @@ module.exports = function(app, passport) {
     app.delete('/api/posts/:postId/comments/:commentId', commentsController.destroy);
 
     // ------------- Authenticated Routes -------------
-    app.post('/api/signup', passport.authenticate('local-signup', {
-        successRedirect: '/',
-        failureRedirect: '/signup',
-        failureFlash: true
-    }));
+    app.post('/api/signup',
+    passport.authenticate('local-signup'),
+    function(req, res) {
+      res.status(200).send();
+    });
 
-    app.post('/api/login', passport.authenticate('local-login', {
-        successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash: true
-    }));
+    // app.post('/api/signup', passport.authenticate('local-signup', {
+    //     successRedirect: '/',
+    //     failureRedirect: '/signup',
+    //     failureFlash: true
+    // }));
+
+    app.post('/api/login',
+    passport.authenticate('local-login'),
+    function(req, res) {
+      res.status(200).send();
+    });
+
+    // app.post('/api/login', passport.authenticate('local-login', {
+    //     successRedirect: '/',
+    //     failureRedirect: '/login',
+    //     failureFlash: true
+    // }));
 };
