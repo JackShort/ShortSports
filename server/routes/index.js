@@ -34,14 +34,14 @@ module.exports = function(app, passport) {
 
     // ------------- Authenticated Routes -------------
     app.post('/api/signup', passport.authenticate('local-signup', {
-        successRedirect: '/', 
-        failureRedirect: '/signup', 
-        failureFlash: true 
+        successRedirect: '/',
+        failureRedirect: '/signup',
+        failureFlash: true
     }));
 
     app.post('/api/login', passport.authenticate('local-login', {
-        successRedirect: '/', 
-        failureRedirect: '/login', 
-        failureFlash: true 
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
     }));
 };

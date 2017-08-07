@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker.jsx';
 
 import './stylesheets/index.css';
-import App from './components/App';
-import Signup from './components/views/signup';
+import App from './components/App.jsx';
+import Signup from './components/views/signup.jsx';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import browserHistory from 'history/createBrowserHistory'
-import routes from './routes';
 
 const Main = () => (
   <BrowserRouter>
@@ -16,7 +15,7 @@ const Main = () => (
       <Route exact path='/' component={App}/>
       <Route path='/signup' component={Signup}/>
     </Switch>
-  </ BrowserRouter>
+  </BrowserRouter>
 )
 
 ReactDOM.render(
