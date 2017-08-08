@@ -48,8 +48,18 @@ module.exports = function(app, passport) {
     app.post('/api/login',
     passport.authenticate('local-login'),
     function(req, res) {
-      res.status(200).send();
+      console.log(req.user.id);
+      res.json({id: req.user.id})
     });
+
+    app.post('/api/post',
+    function(req, res) {
+      if (req.user) {
+        console.log("there is a user");
+      } else {
+        console.log("there is no user");
+      }
+    })
 
     // app.post('/api/login', passport.authenticate('local-login', {
     //     successRedirect: '/',

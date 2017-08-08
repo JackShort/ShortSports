@@ -6,9 +6,9 @@ import './stylesheets/index.css';
 import App from './components/App.jsx';
 import Signup from './components/views/signup.jsx';
 import Login from './components/views/login.jsx';
+import CreatePost from './components/views/createpost.jsx';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import browserHistory from 'history/createBrowserHistory'
 
 const Main = () => (
   <BrowserRouter>
@@ -16,6 +16,7 @@ const Main = () => (
       <Route exact path='/' component={App}/>
       <Route path='/signup' component={Signup}/>
       <Route path='/login' component={Login}/>
+      <Route path='/post' component={CreatePost}/>
     </Switch>
   </BrowserRouter>
 )

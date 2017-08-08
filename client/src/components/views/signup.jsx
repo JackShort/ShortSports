@@ -47,15 +47,18 @@ class Signup extends Component {
             <input
               type="text"
               name="email"
+              value={this.state.email}
               onChange={this.handleChange}/>
               <br/>
           </label>
+          <br/>
 
           <label>
             Password:
             <input
               type="password"
               name="password"
+              value={this.state.password}
               onChange={this.handleChange}/>
               <br/>
           </label>

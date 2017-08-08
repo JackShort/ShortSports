@@ -8,6 +8,12 @@ module.exports = (sequelize, DataTypes) => {
         content: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+
+        upvotes: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 0
         }
     });
 
@@ -15,6 +21,13 @@ module.exports = (sequelize, DataTypes) => {
         Post.hasMany(models.Comment, {
             foreignKey: 'postId',
             as: 'comments'
+        });
+    };
+
+    Post.associate = function(models) {
+        Post.belongsTo(models.User, {
+            foreignKey: 'userId',
+            onDelete: 'CASCADE'
         });
     };
 

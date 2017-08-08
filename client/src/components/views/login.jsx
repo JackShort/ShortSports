@@ -6,7 +6,8 @@ class Login extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      currentUser: this.props.currentUserj
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,13 +37,8 @@ class Login extends Component {
         password: this.state.password
       })
     })
-    .then(req => {
-      if (req.status === 200) {
-        console.log('hello');
-      } else {
-        console.log('shit')
-      }
-    });
+    .then(res => res.json())
+    .then(id => console.log(id));
   }
 
   render() {
@@ -55,9 +51,11 @@ class Login extends Component {
               type="text"
               name="email"
               id="loginemail"
+              value={this.state.email}
               onChange={this.handleChange}/>
               <br/>
           </label>
+          <br/>
 
           <label>
             Password:
@@ -65,6 +63,7 @@ class Login extends Component {
               type="password"
               name="password"
               id="loginpass"
+              value={this.state.password}
               onChange={this.handleChange}/>
               <br/>
           </label>

@@ -38,6 +38,13 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
+    User.associate = (models) => {
+        User.hasMany(models.Post, {
+            foreignKey: 'userId',
+            as: 'posts'
+        });
+    };
+
     User.generateHash = function(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
     };
